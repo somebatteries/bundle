@@ -1,0 +1,25 @@
+*proj.txt*  Plugin for opening projects
+
+Author:  Garrett Smith <garrett.smith@garmin.com>        *proj-author*
+
+INTRODUCTION                                    *proj-intro*
+
+This plugin provides functionality to navigate across multiple project
+spaces.  It will manage changing the ctags path, grep directories,
+working directories etc.
+
+COMMANDS                                        *:proj*
+
+Use the |:proj| command with no arguments to open a buffer containing a
+list of all known projects.
+
+The optional *pattern* argument can be supplied to display a list of all
+known projects whose project name matches the pattern.  If only one 
+match is detected, that project will be opened instantly.
+
+    Example: >
+        :proj GIA.*W
+<   This lists all GIA projects which end in the letter, "W" 
+    If only one project existed, it would be opened right away.
+
+vim:tw=78:ts=8:ft=help:norl:
