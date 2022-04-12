@@ -57,7 +57,6 @@ if( !exists( "g:vimrc_loaded" ) )
     augroup filetypedetect
     au BufRead,BufNewFile *.scb,*.scbv set filetype=scb
     au BufRead,BufNewFile make.inc set filetype=make
-"    au BufNewFile *.c,*.h,*.cpp,*.hpp call NewGarminSource()
     augroup END 
 endif
 
