@@ -50,10 +50,12 @@ if( !exists( "g:vimrc_loaded" ) )
     "-------------------------------------------------------
     autocmd BufWritePre {*.c,*.h,*.cpp,*.hpp,*.py,*.vim,*.m,*.bat,*.xml} call StripTrailingSpaces()
 
+    autocmd BufRead {*/kernel/*} setlocal noexpandtab
+
     "-------------------------------------------------------
     " Auto-disassemble
     "-------------------------------------------------------
-    autocmd BufReadCmd {*.o} exe "sil doau BufReadPre ".fnameescape(expand("<amatch>"))|exe 'silent %!/opt/toolchain/linaro-aarch64-2020.09-gcc10.2-linux5.4/aarch64-linux-gnu/bin/objdump -d ' . fnameescape(expand( "<amatch>" ))|set ro|exe "sil doau BufReadPost ".fnameescape(expand("<amatch>"))
+    autocmd BufReadCmd {*.o} exe "sil doau BufReadPre ".fnameescape(expand("<amatch>"))|exe 'silent %!/opt/toolchain/linaro-aarch64-2020.09-gcc10.2-linux5.4/aarch64-linux-gnu/bin/objdump --demangle -d ' . fnameescape(expand( "<amatch>" ))|set ro|exe "sil doau BufReadPost ".fnameescape(expand("<amatch>"))
 
     "-------------------------------------------------------
     " Custom syntax files
