@@ -22,6 +22,9 @@
 [submodule "vim-pathogen"]
 	path = vim-pathogen
 	url = https://github.com/tpope/vim-pathogen.git
+[submodule "nvim-lspconfig"]
+	path = nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig.git
 [submodule "vim-surround"]
 	path = vim-surround
 	url = https://github.com/tpope/vim-surround.git
