@@ -5,6 +5,10 @@
 " Enable pathogen so that plugins can be kept in bundles under
 " one repository
 "-----------------------------------------------------------
+ let g:pathogen_disabled = []
+ if has('nvim')
+     call add(g:pathogen_disabled, 'YouCompleteMe')
+ endif
 runtime bundle/pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 call pathogen#helptags()
