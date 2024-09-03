@@ -18,7 +18,7 @@
 	url = https://github.com/ycm-core/YouCompleteMe.git
 [submodule "vim-dispatch"]
 	path = vim-dispatch
-	url = git@github.com:tpope/vim-dispatch.git
+	url = https://github.com/tpope/vim-dispatch.git
 [submodule "tabular"]
 	path = tabular
 	url = https://github.com/godlygeek/tabular.git
