@@ -1,15 +1,17 @@
-func! GitGrep(...)
-    call system("git rev-parse")
-    let save = &grepprg
-    if( !v:shell_error )
-        set grepprg=git\ grep\ -P\ -n\ --recurse-submodules\ $*
-    endif
-    let s = 'silent grep!'
-    for i in a:000
-        let s = s . ' ' . i
-    endfor
-    exe s
-    let &grepprg = save
+function! AsyncGrep(...)
+  :compiler grep
+  execute 'Make ' . join(a:000, ' ')
+  "-------------------------------------------------------
+  " Highlight search results
+  "-------------------------------------------------------
+  let @/ = '\v' . a:000[0]
+  exe ":silent set hlsearch"
+endfunction
+command! -nargs=+ -complete=file_in_path G call AsyncGrep(<f-args>)
+
+func! Grep(...)
+    :compiler grep
+    execute 'make ' . join(a:000, ' ')
 
     "-------------------------------------------------------
     " Highlight search results
@@ -23,5 +25,4 @@ func! GitGrep(...)
     execute ":botright copen"
     redraw!
 endfun
-command! -nargs=? G call GitGrep(<f-args>)
-
+command! -nargs=+ -complete=file_in_path GNow call Grep(<f-args>)

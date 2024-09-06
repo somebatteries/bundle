@@ -5,10 +5,16 @@
 " Enable pathogen so that plugins can be kept in bundles under
 " one repository
 "-----------------------------------------------------------
- let g:pathogen_disabled = []
- if has('nvim')
-     call add(g:pathogen_disabled, 'YouCompleteMe')
- endif
+let g:pathogen_disabled = []
+" If vim version < Vim 8.1.2269, then disable YouCompleteMe
+if has('nvim') || v:version < 801 || (v:version == 801 && !has('patch-8.1.2269'))
+    call add(g:pathogen_disabled, 'YouCompleteMe')
+endif
+
+if !has('nvim')
+    call add(g:pathogen_disabled, 'nvim-lspconfig')
+endif
+
 runtime bundle/pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 call pathogen#helptags()
