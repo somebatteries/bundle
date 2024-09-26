@@ -378,6 +378,11 @@ require'lspconfig'.clangd.setup{}
 EOF
 
 lua << EOF
+-- Set the clang root directory to project root, defined by grm_project:
+local root_dir_fcn = function(fname)
+    return vim.fn.getcwd()
+end
+
 local nvim_lsp = require('lspconfig')
 
 -- Use an on_attach function to only map the following keys
@@ -419,6 +424,7 @@ local servers = { 'clangd' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
+    root_dir = root_dir_fcn,
     flags = {
       debounce_text_changes = 150,
     }
